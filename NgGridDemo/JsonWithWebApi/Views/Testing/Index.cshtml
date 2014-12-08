@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <script type="text/javascript">
+        function DisplayJSON() {
+
+            alert("Hello");
+
+            $.getJSON("@Url.Content("~/api/Json")").done(function (d) {
+                alert(d.Name);
+            });
+        }
+
+        function PostJSON()
+        {
+            var application = {Name:"Spectra",Language:""};
+            $.post("@Url.Content("~/api/Json")","Application="+ JSON.stringify(application)).done(function (d) {
+                alert(d);
+            });
+        }
+
+    </script>
+</head>
+
+<h2>Index</h2>
+<input type="button" value="Get Application" onclick="DisplayJSON();"/>
+
+<input type="button" value="Post App" onclick="PostJSON();"/>
+
